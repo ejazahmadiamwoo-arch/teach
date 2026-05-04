@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>muSharp | About Us – Our Story, Mission & Culture</title>
+    <!-- Tailwind CSS + Font Awesome + Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.7s ease-out',
+                        'float-slow': 'floatSlow 7s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        floatSlow: { '0%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' }, '100%': { transform: 'translateY(0px)' } },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .gradient-bg-hero {
+            background: radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.08) 0%, rgba(30, 64, 175, 0.02) 80%);
+        }
+        .team-card {
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+        }
+        .value-icon {
+            transition: transform 0.2s ease;
+        }
+        .group:hover .value-icon {
+            transform: scale(1.1);
+        }
+        .timeline-dot {
+            box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation (consistent with brand) -->
+    <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold tracking-tight flex items-center">
+                <span class="bg-gradient-to-r from-cyan-600 to-blue-700 text-white px-2.5 py-1.5 rounded-xl mr-1.5 text-xl">μ</span>
+                <span class="text-gray-800">mu</span><span class="text-cyan-700">Sharp</span>
+            </a>
+            <div class="hidden md:flex gap-8 text-gray-600 font-medium">
+                <a href="Mainpage.html" class="hover:text-cyan-700 transition">Home</a>
+                <a href="service.html" class="hover:text-cyan-700 transition">Services</a>
+                <a href="resources.html" class="hover:text-cyan-700 transition">Resources</a>
+                <a href="about.html" class="hover:text-cyan-700 transition">About</a>
+                
+            </div>
+            <button class="bg-blue-700 text-white px-5 py-2 rounded-xl font-semibold text-sm shadow-md hover:bg-blue-800 transition flex items-center gap-2">
+                <i class="fas fa-handshake"></i> Let's Connect
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section - About Intro -->
+    <section class="relative overflow-hidden gradient-bg-hero py-24 md:py-32">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-2xl"></div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative">
+            <div class="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-sm border border-gray-200 mb-6">
+                <i class="fas fa-flag-checkered text-cyan-600 text-sm"></i>
+                <span class="text-xs font-bold text-gray-700 tracking-wide">OUR STORY</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6">
+                We Build <span class="bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent">Trust</span><br> Through Code & Character
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                Founded in 2007, muSharp has grown into a global technology partner — blending deep engineering expertise with a people-first mindset.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Cards -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="bg-white rounded-3xl border border-gray-100 p-8 shadow-xl hover:shadow-2xl transition-all duration-300 group">
+                <div class="w-16 h-16 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-bullseye text-2xl text-cyan-700"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold mb-4">Our Mission</h3>
+                <p class="text-gray-600 leading-relaxed text-lg">To empower businesses with future-ready technology that drives measurable growth, operational excellence, and unmatched user experiences — while fostering innovation with integrity.</p>
+            </div>
+            <div class="bg-white rounded-3xl border border-gray-100 p-8 shadow-xl hover:shadow-2xl transition-all duration-300 group">
+                <div class="w-16 h-16 bg-gradient-to-br from-indigo-100 to-cyan-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-eye text-2xl text-indigo-700"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold mb-4">Our Vision</h3>
+                <p class="text-gray-600 leading-relaxed text-lg">To be the most trusted digital engineering partner worldwide, where technology meets empathy and every solution creates lasting impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline (Company Milestones) -->
+    <section class="bg-gray-50 py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-sm font-bold text-cyan-600 uppercase tracking-wider bg-white px-4 py-1.5 rounded-full shadow-sm inline-block">The Journey</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold mt-5 mb-4">From Startup to Global Force</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto rounded-full"></div>
+            </div>
+            <div class="relative">
+                <!-- Vertical line for desktop -->
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b from-cyan-300 to-blue-300 h-full"></div>
+                <div class="space-y-12 md:space-y-0 relative">
+                    <!-- 2007 -->
+                    <div class="md:flex items-center justify-between md:even:flex-row-reverse">
+                        <div class="md:w-5/12 p-6 bg-white rounded-2xl shadow-md border border-gray-100 mb-6 md:mb-0">
+                            <div class="flex items-center gap-3 mb-2"><i class="fas fa-rocket text-cyan-600"></i><span class="text-xs font-bold text-cyan-600">2007</span></div>
+                            <h4 class="text-xl font-bold">Foundation Year</h4>
+                            <p class="text-gray-500 text-sm">muSharp started as a two-person development shop with a vision to deliver high-quality software.</p>
+                        </div>
+                        <div class="md:w-2/12 flex justify-center"><div class="w-10 h-10 bg-cyan-600 rounded-full border-4 border-white shadow-md timeline-dot z-10"></div></div>
+                        <div class="md:w-5/12"></div>
+                    </div>
+                    <!-- 2013 -->
+                    <div class="md:flex items-center justify-between md:even:flex-row-reverse mt-8">
+                        <div class="md:w-5/12"></div>
+                        <div class="md:w-2/12 flex justify-center"><div class="w-10 h-10 bg-cyan-600 rounded-full border-4 border-white shadow-md timeline-dot z-10"></div></div>
+                        <div class="md:w-5/12 p-6 bg-white rounded-2xl shadow-md border border-gray-100">
+                            <div class="flex items-center gap-3 mb-2"><i class="fas fa-chart-line text-cyan-600"></i><span class="text-xs font-bold text-cyan-600">2013</span></div>
+                            <h4 class="text-xl font-bold">Global Expansion</h4>
+                            <p class="text-gray-500 text-sm">Opened offices in USA & UAE, serving 50+ enterprise clients worldwide.</p>
+                        </div>
+                    </div>
+                    <!-- 2018 -->
+                    <div class="md:flex items-center justify-between md:even:flex-row-reverse mt-8">
+                        <div class="md:w-5/12 p-6 bg-white rounded-2xl shadow-md border border-gray-100">
+                            <div class="flex items-center gap-3 mb-2"><i class="fas fa-brain text-cyan-600"></i><span class="text-xs font-bold text-cyan-600">2018</span></div>
+                            <h4 class="text-xl font-bold">AI & Data Practice</h4>
+                            <p class="text-gray-500 text-sm">Launched dedicated AI/ML division; delivered first predictive analytics platform.</p>
+                        </div>
+                        <div class="md:w-2/12 flex justify-center"><div class="w-10 h-10 bg-cyan-600 rounded-full border-4 border-white shadow-md timeline-dot z-10"></div></div>
+                        <div class="md:w-5/12"></div>
+                    </div>
+                    <!-- 2024 -->
+                    <div class="md:flex items-center justify-between md:even:flex-row-reverse mt-8">
+                        <div class="md:w-5/12"></div>
+                        <div class="md:w-2/12 flex justify-center"><div class="w-10 h-10 bg-cyan-600 rounded-full border-4 border-white shadow-md timeline-dot z-10"></div></div>
+                        <div class="md:w-5/12 p-6 bg-white rounded-2xl shadow-md border border-gray-100">
+                            <div class="flex items-center gap-3 mb-2"><i class="fas fa-users text-cyan-600"></i><span class="text-xs font-bold text-cyan-600">2024</span></div>
+                            <h4 class="text-xl font-bold">350+ Team Members</h4>
+                            <p class="text-gray-500 text-sm">Cross-continental team of engineers, designers, and strategists.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section (Core Principles) -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <i class="fas fa-heart text-cyan-600 text-3xl mb-3"></i>
+            <h2 class="text-4xl md:text-5xl font-extrabold">The Values That Guide Us</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto mt-4">Our culture is built on principles that drive excellence, collaboration, and integrity.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="group text-center p-6 rounded-2xl bg-white border border-gray-100 hover:shadow-xl transition-all">
+                <div class="value-icon w-16 h-16 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5"><i class="fas fa-handshake text-2xl text-cyan-700"></i></div>
+                <h3 class="text-xl font-bold mb-2">Integrity First</h3>
+                <p class="text-sm text-gray-500">Honest communication, transparent processes, and ethical solutions.</p>
+            </div>
+            <div class="group text-center p-6 rounded-2xl bg-white border border-gray-100 hover:shadow-xl transition-all">
+                <div class="value-icon w-16 h-16 bg-gradient-to-br from-indigo-100 to-cyan-100 rounded-2xl flex items-center justify-center mx-auto mb-5"><i class="fas fa-lightbulb text-2xl text-indigo-700"></i></div>
+                <h3 class="text-xl font-bold mb-2">Innovation Drive</h3>
+                <p class="text-sm text-gray-500">Embrace emerging tech and creative problem-solving every day.</p>
+            </div>
+            <div class="group text-center p-6 rounded-2xl bg-white border border-gray-100 hover:shadow-xl transition-all">
+                <div class="value-icon w-16 h-16 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-5"><i class="fas fa-chart-simple text-2xl text-emerald-700"></i></div>
+                <h3 class="text-xl font-bold mb-2">Client Success</h3>
+                <p class="text-sm text-gray-500">Your growth is our success — we measure ROI, not just output.</p>
+            </div>
+            <div class="group text-center p-6 rounded-2xl bg-white border border-gray-100 hover:shadow-xl transition-all">
+                <div class="value-icon w-16 h-16 bg-gradient-to-br from-rose-100 to-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-5"><i class="fas fa-people-arrows text-2xl text-rose-700"></i></div>
+                <h3 class="text-xl font-bold mb-2">Collaborative Spirit</h3>
+                <p class="text-sm text-gray-500">One team mindset across borders, cultures, and disciplines.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team Section -->
+    <section class="bg-slate-50 py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-14">
+                <h2 class="text-4xl md:text-5xl font-extrabold">Meet the Leaders</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-3">Driving vision, strategy, and technical excellence.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="team-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-64 bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center"><i class="fas fa-user-circle text-7xl text-white/80"></i></div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Ch.Ali Chen</h3>
+                        <p class="text-cyan-600 font-semibold text-sm mb-3">CEO & Co-Founder</p>
+                        <p class="text-gray-500 text-sm">20+ years in enterprise software, ex-Microsoft. Leads global strategy & innovation.</p>
+                        <div class="flex justify-center gap-3 mt-4 text-gray-400"><i class="fab fa-linkedin hover:text-cyan-600 cursor-pointer"></i><i class="fab fa-twitter hover:text-cyan-600 cursor-pointer"></i></div>
+                    </div>
+                </div>
+                <div class="team-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold">Sarah Williams</h3>
+                    <p class="text-cyan-600 font-semibold text-sm mb-3">CTO, AI & Engineering</p>
+                    <p class="text-gray-500 text-sm">PhD in ML, previously led data teams at Google. Passionate about responsible AI.</p>
+                    <div class="flex justify-center gap-3 mt-4 text-gray-400">
+                        <i class="fab fa-linkedin hover:text-cyan-600 cursor-pointer"></i>
+                        <i class="fab fa-github hover:text-cyan-600 cursor-pointer"></i>
+                    </div>
+                </div>
+            </div>
+                <div class="team-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-64 bg-gradient-to-r from-emerald-500 to-teal-600 flex items-center justify-center"><i class="fas fa-user-circle text-7xl text-white/80"></i></div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">David Okafor</h3>
+                        <p class="text-cyan-600 font-semibold text-sm mb-3">Head of Client Solutions</p>
+                        <p class="text-gray-500 text-sm">Ex-McKinsey digital practice, ensures delivery excellence & client partnership.</p>
+                        <div class="flex justify-center gap-3 mt-4 text-gray-400"><i class="fab fa-linkedin hover:text-cyan-600 cursor-pointer"></i><i class="fab fa-twitter hover:text-cyan-600 cursor-pointer"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations & Global Presence -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+            <div class="lg:w-1/2">
+                <div class="inline-flex items-center gap-2 bg-cyan-50 px-3 py-1 rounded-full mb-4"><i class="fas fa-globe-americas text-cyan-600 text-xs"></i><span class="text-xs font-semibold text-cyan-700">Global Footprint</span></div>
+                <h2 class="text-4xl font-extrabold mb-5">Where Ideas Become Reality</h2>
+                <p class="text-gray-500 mb-6 leading-relaxed">With headquarters in San Francisco, development hubs in Europe & Asia, and clients across 5 continents — we deliver 24/7 support and agile collaboration.</p>
+                <div class="grid grid-cols-2 gap-5 mt-8">
+                    <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-600 text-xl"></i><div><p class="font-bold">San Francisco, USA</p><p class="text-xs text-gray-400">Global HQ</p></div></div>
+                    <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-600 text-xl"></i><div><p class="font-bold">London, UK</p><p class="text-xs text-gray-400">EMEA Hub</p></div></div>
+                    <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-600 text-xl"></i><div><p class="font-bold">Singapore</p><p class="text-xs text-gray-400">APAC Center</p></div></div>
+                    <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-600 text-xl"></i><div><p class="font-bold">Dubai, UAE</p><p class="text-xs text-gray-400">MENA Office</p></div></div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 bg-gray-100 rounded-3xl p-1 shadow-xl"><div class="bg-gradient-to-br from-cyan-50 to-white rounded-2xl p-8 text-center border border-gray-200"><i class="fas fa-building text-6xl text-cyan-300 mb-3"></i><p class="text-gray-500 italic">"We believe in distributed excellence — talent without borders, impact without limits."</p><p class="font-bold mt-3">— Ch.Ali Chen, CEO -Partner Maichel Jawad Haider</p></div></div>
+        </div>
+    </section>
+
+    <!-- Culture & Stats Section -->
+    <div class="bg-white border-y border-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-center">
+            <div><div class="text-4xl font-black text-cyan-700">350+</div><div class="text-sm text-gray-500">Talented professionals</div></div>
+            <div><div class="text-4xl font-black text-cyan-700">18+</div><div class="text-sm text-gray-500">Years of innovation</div></div>
+            <div><div class="text-4xl font-black text-cyan-700">1200+</div><div class="text-sm text-gray-500">Successful deliveries</div></div>
+            <div><div class="text-4xl font-black text-cyan-700">98%</div><div class="text-sm text-gray-500">Client retention rate</div></div>
+        </div>
+    </div>
+
+    <!-- Join the team CTA -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-center text-white shadow-2xl">
+            <i class="fas fa-rocket text-4xl text-cyan-400 mb-4"></i>
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-3">Ready to Make an Impact?</h2>
+            <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">Join a culture that values curiosity, craftsmanship, and collaboration. Explore open roles.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="bg-cyan-500 hover:bg-cyan-600 px-8 py-3 rounded-xl font-bold transition shadow-lg flex items-center gap-2"><i class="fab fa-linkedin"></i> View Careers</button>
+                <button class="bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 px-8 py-3 rounded-xl font-semibold transition">Contact Recruiting</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
+            <div><div class="text-2xl font-bold text-white mb-3">mu<span class="text-cyan-500">Sharp</span></div><p class="text-sm">Engineering excellence, digital transformation partner since 2007.</p></div>
+            <div><h5 class="font-semibold text-white mb-3">Explore</h5><ul class="text-sm space-y-2"><li>Services</li><li>Case Studies</li><li>Resources</li><li>Blog</li></ul></div>
+            <div><h5 class="font-semibold text-white mb-3">Company</h5><ul class="text-sm space-y-2"><li>About</li><li>Careers</li><li>Contact</li><li>Press</li></ul></div>
+            <div><h5 class="font-semibold text-white mb-3">Connect</h5><div class="flex gap-4 text-xl"><i class="fab fa-linkedin hover:text-cyan-400 cursor-pointer"></i><i class="fab fa-twitter hover:text-cyan-400 cursor-pointer"></i><i class="fab fa-github hover:text-cyan-400 cursor-pointer"></i><i class="fab fa-instagram hover:text-cyan-400 cursor-pointer"></i></div><p class="text-sm mt-4">hello@musharp.com</p></div>
+        </div>
+        <div class="text-center pt-10 border-t border-gray-800 text-xs mt-8">© 2025 muSharp — Where vision meets velocity. All rights reserved.</div>
+    </footer>
+
+    <!-- Simple interactive demo alerts -->
+    <script>
+        document.querySelectorAll('.bg-blue-700, .bg-cyan-500, .bg-white\\/10, .team-card .fab, .value-icon, .team-card').forEach(el => {
+            if(el.classList?.contains('bg-blue-700') || el.innerText?.includes('Connect') || el.innerText?.includes('Careers') || el.tagName === 'I' && el.classList?.contains('fab')) {
+                el.addEventListener('click', (e) => {
+                    if(e.target.closest('.bg-blue-700') || e.target.closest('.bg-cyan-500') || e.target.closest('.bg-white\\/10')) {
+                        e.preventDefault();
+                        alert("💼 Thanks for your interest! Our team will reach out with more details.");
+                    }
+                });
+            }
+        });
+        // additional career buttons
+        const careerBtn = document.querySelector('.bg-cyan-500');
+        if(careerBtn) careerBtn.addEventListener('click', () => alert("🚀 Explore exciting career opportunities at muSharp — check our careers page for openings!"));
+        const connectMainBtn = document.querySelector('.bg-blue-700');
+        if(connectMainBtn) connectMainBtn.addEventListener('click', () => alert("📞 Let's start a conversation! Our sales team will respond within 24 hours."));
+        
+        // Set active navbar link based on current page
+        const currentPath = window.location.pathname.split('/').pop() || 'Mainpage.html';
+        const navLinks = document.querySelectorAll('a[href]');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPath) {
+                link.classList.add('text-cyan-700', 'border-b-2', 'border-cyan-600', 'pb-0.5');
+            }
+        });
+    </script>
+</body>
+</html>

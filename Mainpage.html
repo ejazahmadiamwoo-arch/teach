@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Apex | Digital Marketing & IT Excellence</title>
+    <!-- Tailwind + Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <!-- Advanced Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Custom config to override Tailwind defaults for better alignment -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                    },
+                    boxShadow: {
+                        'soft-xl': '0 20px 35px -12px rgba(0,0,0,0.08)',
+                        'glow-cyan': '0 0 30px rgba(6, 182, 212, 0.3)',
+                        'glow-blue': '0 0 30px rgba(37, 99, 235, 0.3)',
+                        'card-hover': '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s infinite',
+                        'gradient-shift': 'gradient-shift 8s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(6, 182, 212, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(6, 182, 212, 0.8)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' },
+                        },
+                        'gradient-shift': {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            animation: gradient-shift 10s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        /* custom gradient text with animation */
+        .gradient-text {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0891b2 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-shift 6s ease infinite;
+            background-size: 300% 300%;
+        }
+        
+        /* Advanced glass morphism */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Enhanced step line pseudo element */
+        .step-line-relative {
+            position: relative;
+        }
+        .step-line-relative:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 44px;
+            bottom: -28px;
+            width: 2px;
+            background: linear-gradient(to bottom, #06b6d4 0%, #0891b2 50%, transparent 100%);
+            box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+        }
+        
+        /* Active service tab style with animation */
+        .service-tab-active {
+            color: #0e7b9e;
+            border-left: 4px solid #0e7b9e;
+            padding-left: 1rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, rgba(6, 182, 212, 0.05) 0%, transparent 100%);
+            border-radius: 0.5rem;
+            animation: slideInLeft 0.3s ease;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .service-tab-inactive {
+            color: #6b7280;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-tab-inactive:hover {
+            color: #0891b2;
+            border-left: 2px solid rgba(6, 182, 212, 0.5);
+            background: rgba(6, 182, 212, 0.02);
+        }
+        
+        /* Advanced service card hover */
+        .service-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding-bottom: 1.5rem;
+            border-image: linear-gradient(135deg, rgba(6, 182, 212, 0) 0%, rgba(6, 182, 212, 0.3) 100%) 1;
+        }
+        
+        .service-card-hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card-hover:hover {
+            transform: translateY(-4px);
+            padding-left: 1rem;
+        }
+        
+        .service-card-hover:hover .arrow-icon {
+            transform: translateX(8px) rotate(45deg);
+            color: #06b6d4;
+            filter: drop-shadow(0 0 4px rgba(6, 182, 212, 0.4));
+        }
+        
+        .service-card-hover:hover::after {
+            opacity: 1;
+        }
+        
+        /* Enhanced buttons */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        /* Focus ring */
+        .focus-ring:focus {
+            outline: none;
+            border-bottom-color: #06b6d4;
+            border-bottom-width: 2px;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+        }
+        
+        /* Nav link styling */
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #06b6d4, #0891b2);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Rounded custom */
+        .rounded-custom {
+            border-radius: 2rem;
+        }
+        
+        /* Stat number animation */
+        .stat-box {
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stat-box:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Floating elements */
+        .float-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Glow effects */
+        .glow-effect {
+            position: relative;
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        /* Advanced input styling */
+        input, textarea {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 0.5rem;
+        }
+        
+        input:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Particles background */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        /* Smooth scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #06b6d4, #0891b2);
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #0891b2, #0e7b9e);
+        }
+        
+        /* Dark Mode Styles */
+        .dark body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e5e5e5;
+        }
+        
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+        
+        .dark h1, .dark h2, .dark h3, .dark h4 {
+            color: #f3f4f6;
+        }
+        
+        .dark p, .dark li {
+            color: #d1d5db;
+        }
+        
+        .dark .bg-gradient-to-br.from-gray-50.to-blue-50 {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        }
+        
+        .dark .bg-white\/80 {
+            background: rgba(31, 41, 55, 0.8);
+        }
+        
+        .dark input, .dark textarea {
+            background: rgba(55, 65, 81, 0.5);
+            border-color: #4b5563;
+            color: #f3f4f6;
+        }
+        
+        .dark input:focus, .dark textarea:focus {
+            background: rgba(55, 65, 81, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress" class="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-blue-600 z-50" style="transform: scaleX(0); transform-origin: left;"></div>
+
+    <!-- Navigation - Advanced with Glassmorphism & Animations -->
+    <div class="relative z-20 glass-effect border-b border-white/20 sticky top-0">
+        <nav class="flex items-center justify-between px-6 md:px-10 lg:px-12 py-5 max-w-7xl mx-auto">
+            <div class="text-2xl font-extrabold tracking-tight flex items-center gap-2 group cursor-pointer">
+                <div class="bg-gradient-to-br from-cyan-500 to-blue-600 text-white px-2.5 py-1.5 rounded-xl mr-1.5 text-xl font-black group-hover:shadow-glow-cyan transition-all duration-300 transform group-hover:scale-110">μ</div>
+                <span class="text-gray-800 group-hover:text-cyan-700 transition-colors">Apex</span><span class="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Tech</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-semibold text-gray-600 text-sm uppercase tracking-wider">
+                <a href="#" class="nav-link hover:text-cyan-600">Home</a>
+                <a href="service.html" class="nav-link hover:text-cyan-600">Services</a>
+                <a href="resources.html" class="nav-link hover:text-cyan-600">Resources</a>
+                <a href="about.html" class="nav-link hover:text-cyan-600">About</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="darkModeToggle" class="btn-primary bg-gray-800 text-white px-4 py-2 rounded-xl font-bold shadow-lg hover:shadow-glow-blue transition-all duration-300">
+                    🌙 Dark Mode
+                </button>
+                <button class="btn-primary bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-7 py-2.5 rounded-xl font-bold shadow-lg hover:shadow-glow-cyan transition-all duration-300">Contact Us</button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section - Advanced with Animations & Modern Design -->
+    <section class="relative pt-14 pb-16 md:pt-24 md:pb-32 overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center px-5 sm:px-6">
+            <div class="inline-block mb-6 animate__animated animate__fadeInDown">
+                <span class="text-sm font-black text-cyan-600 uppercase tracking-[0.4em] bg-gradient-to-r from-cyan-50 to-blue-50 px-5 py-2.5 rounded-full border border-cyan-200/50 shadow-sm hover:shadow-glow-cyan transition-all duration-300">✨ Engineering Excellence</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-tight mb-6 tracking-tight animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                Your Trusted Partner in <br>
+                <span class="gradient-text block mt-2">Digital Marketing & IT</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed animate__animated animate__fadeInUp font-medium" style="animation-delay: 0.3s">
+                Transform your business with cutting-edge technology, strategic digital solutions, and 18+ years of proven expertise. We don't just deliver—we elevate.
+            </p>
+            <div class="flex justify-center gap-4 mb-20 animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                <a href="#contact-anchor" class="btn-primary bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-10 py-4 rounded-2xl text-lg font-bold shadow-xl inline-flex items-center gap-2 group">
+                    Let's Talk Now <span class="group-hover:translate-x-1 transition-transform transform">→</span>
+                </a>
+                <button class="border-2 border-cyan-600 text-cyan-600 px-10 py-4 rounded-2xl text-lg font-bold hover:bg-cyan-50 transition-all duration-300">
+                    Learn More
+                </button>
+            </div>
+
+            <!-- Advanced Stats Card - Animated -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 py-10 px-8 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl text-white shadow-2xl max-w-4xl mx-auto border border-slate-700/50 backdrop-blur-xl animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                <div class="text-center stat-box" style="animation-delay: 0.5s">
+                    <div class="text-4xl md:text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">18+</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-300 font-black mt-2">Years Exp</div>
+                </div>
+                <div class="text-center stat-box" style="animation-delay: 0.6s">
+                    <div class="text-4xl md:text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">1200+</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-300 font-black mt-2">Projects</div>
+                </div>
+                <div class="text-center stat-box" style="animation-delay: 0.7s">
+                    <div class="text-4xl md:text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">50+</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-300 font-black mt-2">Products</div>
+                </div>
+                <div class="text-center stat-box" style="animation-delay: 0.8s">
+                    <div class="text-4xl md:text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">350+</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-300 font-black mt-2">Team Size</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Tabs & Grid Section - Advanced Design -->
+    <section class="max-w-7xl mx-auto py-16 md:py-32 px-5 md:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-4">Our Services</h2>
+            <div class="h-1 w-24 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full mx-auto"></div>
+        </div>
+        
+        <!-- Tab Buttons Row with Glassmorphism -->
+        <div class="flex flex-wrap justify-center items-center gap-4 md:gap-12 mb-16 pb-8 border-b-2 border-gray-200 relative">
+            <button data-tab="crm" class="tab-btn text-2xl md:text-3xl font-black transition-all duration-300 text-gray-500 hover:text-cyan-600 relative group">
+                CRM
+                <span class="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-cyan-600 to-blue-600 group-hover:w-full transition-all duration-300 rounded-full"></span>
+            </button>
+            <div class="hidden md:block w-px h-10 bg-gradient-to-b from-gray-300 to-transparent"></div>
+            <button data-tab="software" class="tab-btn active-tab-btn text-2xl md:text-3xl font-black text-cyan-600 relative group">
+                Software Development
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full"></span>
+            </button>
+            <div class="hidden md:block w-px h-10 bg-gradient-to-b from-gray-300 to-transparent"></div>
+            <button data-tab="ai" class="tab-btn text-2xl md:text-3xl font-black text-gray-500 hover:text-cyan-600 relative group">
+                AI/ML
+                <span class="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-cyan-600 to-blue-600 group-hover:w-full transition-all duration-300 rounded-full"></span>
+            </button>
+        </div>
+
+        <!-- Dynamic Content Area: left menu + service cards -->
+        <div id="tabContentContainer" class="flex flex-col lg:flex-row gap-10 lg:gap-16">
+            <!-- Left Sidebar -->
+            <div class="lg:w-1/4 w-full">
+                <h3 class="text-3xl font-black bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-8 tracking-tight">Services</h3>
+                <ul id="serviceCategoryList" class="space-y-3 text-base font-semibold">
+                    <!-- dynamic from JS -->
+                </ul>
+            </div>
+            <!-- Right Cards Grid -->
+            <div class="lg:w-3/4 w-full">
+                <div id="serviceCardsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+                    <!-- loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section - Advanced Carousel -->
+    <section class="py-16 md:py-32 bg-gradient-to-br from-cyan-50 to-blue-50 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-cyan-100/20 to-blue-100/20"></div>
+        <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-4">What Our Clients Say</h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full mx-auto"></div>
+            </div>
+            
+            <div class="relative">
+                <div id="testimonialCarousel" class="flex overflow-hidden">
+                    <div class="testimonial-slide flex-shrink-0 w-full">
+                        <div class="bg-white/80 glass-effect rounded-3xl p-8 md:p-12 shadow-xl border border-white/50 backdrop-blur-sm">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-black text-xl mr-4">JD</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">John Doe</h4>
+                                    <p class="text-gray-600">CEO, TechCorp</p>
+                                </div>
+                            </div>
+                            <p class="text-lg text-gray-700 leading-relaxed italic">"ApexTech transformed our digital presence completely. Their expertise in AI and software development helped us scale 300% in just 6 months."</p>
+                            <div class="flex text-cyan-500 mt-4">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide flex-shrink-0 w-full">
+                        <div class="bg-white/80 glass-effect rounded-3xl p-8 md:p-12 shadow-xl border border-white/50 backdrop-blur-sm">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-black text-xl mr-4">AS</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">Alice Smith</h4>
+                                    <p class="text-gray-600">CTO, InnovateLabs</p>
+                                </div>
+                            </div>
+                            <p class="text-lg text-gray-700 leading-relaxed italic">"The CRM solutions provided by ApexTech streamlined our operations. Professional, efficient, and results-driven."</p>
+                            <div class="flex text-cyan-500 mt-4">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide flex-shrink-0 w-full">
+                        <div class="bg-white/80 glass-effect rounded-3xl p-8 md:p-12 shadow-xl border border-white/50 backdrop-blur-sm">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-black text-xl mr-4">MJ</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">Mike Johnson</h4>
+                                    <p class="text-gray-600">Founder, StartupXYZ</p>
+                                </div>
+                            </div>
+                            <p class="text-lg text-gray-700 leading-relaxed italic">"From concept to deployment, ApexTech delivered beyond expectations. Their team is world-class."</p>
+                            <div class="flex text-cyan-500 mt-4">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="prevTestimonial" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 glass-effect rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <span class="text-cyan-600 text-2xl">‹</span>
+                </button>
+                <button id="nextTestimonial" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 glass-effect rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <span class="text-cyan-600 text-2xl">›</span>
+                </button>
+                
+                <div class="flex justify-center mt-8 space-x-2">
+                    <span class="testimonial-dot w-3 h-3 bg-cyan-600 rounded-full cursor-pointer"></span>
+                    <span class="testimonial-dot w-3 h-3 bg-gray-300 rounded-full cursor-pointer"></span>
+                    <span class="testimonial-dot w-3 h-3 bg-gray-300 rounded-full cursor-pointer"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Advanced Design with Glassmorphism -->
+    <section id="contact-anchor" class="bg-gradient-to-br from-gray-50 to-blue-50 py-20 px-5 md:px-8 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto bg-white/70 glass-effect rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-white/40 backdrop-blur-md">
+            <!-- Left form area -->
+            <div class="lg:w-1/2 p-8 md:p-12">
+                <h3 class="text-4xl font-black text-gray-900 mb-3">Get In Touch</h3>
+                <p class="text-gray-500 mb-10 text-sm font-medium">We'll respond promptly after processing your request!</p>
+                <form class="space-y-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="relative">
+                            <input type="text" placeholder="Name*" class="w-full bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 px-4 py-3 rounded-xl focus:ring-2 focus:ring-cyan-400 outline-none transition-all duration-300 text-gray-700 text-sm font-medium">
+                        </div>
+                        <div class="relative">
+                            <input type="text" placeholder="Company" class="w-full bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 px-4 py-3 rounded-xl focus:ring-2 focus:ring-cyan-400 outline-none transition-all duration-300 text-gray-700 text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="relative">
+                            <input type="email" placeholder="Corporate email*" class="w-full bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 px-4 py-3 rounded-xl focus:ring-2 focus:ring-cyan-400 outline-none transition-all duration-300 text-gray-700 text-sm font-medium">
+                        </div>
+                        <div class="relative">
+                            <input type="tel" placeholder="Phone*" class="w-full bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 px-4 py-3 rounded-xl focus:ring-2 focus:ring-cyan-400 outline-none transition-all duration-300 text-gray-700 text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <textarea placeholder="Describe Your needs in detail" rows="4" class="w-full bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 px-4 py-3 rounded-xl focus:ring-2 focus:ring-cyan-400 outline-none transition-all duration-300 resize-none text-gray-700 text-sm font-medium"></textarea>
+                    </div>
+                    <button type="button" class="btn-primary w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:shadow-glow-cyan transition-all duration-300 shadow-lg inline-flex items-center justify-center gap-2 text-lg">
+                        Let's Talk! <span class="text-xl">✨</span>
+                    </button>
+                </form>
+            </div>
+            <!-- Right steps area - Advanced -->
+            <div class="lg:w-1/2 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 md:p-12 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-cyan-500/10 to-transparent rounded-full blur-3xl"></div>
+                <h3 class="text-3xl font-black mb-10 relative z-10">What Happens Next?</h3>
+                <div class="space-y-12 relative z-10">
+                    <div class="flex items-start space-x-6 step-line-relative group cursor-pointer">
+                        <div class="z-10 w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center font-black text-white text-sm shadow-lg group-hover:scale-110 transition-transform duration-300">01</div>
+                        <div class="pt-2">
+                            <h4 class="font-bold text-sm mb-1 group-hover:text-cyan-300 transition-colors">Initial Discussion</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed font-normal">Discussion of project needs and signing of NDA for confidentiality.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-6 step-line-relative group cursor-pointer">
+                        <div class="z-10 w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center font-black text-white text-sm shadow-lg group-hover:scale-110 transition-transform duration-300">02</div>
+                        <div class="pt-2">
+                            <h4 class="font-bold text-sm mb-1 group-hover:text-cyan-300 transition-colors">Requirements Review</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed font-normal">Requirements review and creation of a detailed project proposal.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-6 group cursor-pointer">
+                        <div class="z-10 w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center font-black text-white text-sm shadow-lg group-hover:scale-110 transition-transform duration-300">03</div>
+                        <div class="pt-2">
+                            <h4 class="font-bold text-sm mb-1 group-hover:text-cyan-300 transition-colors">Final Agreement</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed font-normal">Meeting to finalize strategy and reach an agreement.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 pt-6 border-t border-slate-600 relative z-10">
+                    <p class="text-xs text-gray-400 flex items-center gap-2">🔒 100% confidential & client-first approach</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Footer -->
+    <footer class="bg-white border-t border-gray-100 py-8 text-center text-gray-500 text-sm font-medium">
+        <div class="max-w-6xl mx-auto px-5">© 2025 ApexTech · Innovation meets delivery. All rights reserved.</div>
+    </footer>
+
+    <!-- Main Footer -->
+    <footer class="bg-gradient-to-b from-slate-900 to-slate-950 text-gray-300 py-16 px-6 relative overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-12 mb-12">
+            <div>
+                <div class="text-2xl font-black text-white mb-4 group cursor-pointer">
+                    <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Apex</span><span class="text-white group-hover:text-cyan-400 transition-colors">Tech</span>
+                </div>
+                <p class="text-sm leading-relaxed text-gray-400">Engineering excellence, digital transformation partner. Building the future today.</p>
+            </div>
+            <div>
+                <h5 class="font-black text-white mb-5 uppercase text-sm tracking-wider">Services</h5>
+                <ul class="text-sm space-y-3 text-gray-400">
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Software Development</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">AI/ML Solutions</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Cloud & DevOps</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Digital Marketing</li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-black text-white mb-5 uppercase text-sm tracking-wider">Company</h5>
+                <ul class="text-sm space-y-3 text-gray-400">
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">About Us</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Careers</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Case Studies</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Blog</li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-black text-white mb-5 uppercase text-sm tracking-wider">Resources</h5>
+                <ul class="text-sm space-y-3 text-gray-400">
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Documentation</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">API Docs</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Support</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Contact</li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-black text-white mb-5 uppercase text-sm tracking-wider">Connect</h5>
+                <div class="flex gap-4 text-xl mb-6">
+                    <a href="#" class="bg-gray-800 hover:bg-cyan-600 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 transform hover:scale-110">f</a>
+                    <a href="#" class="bg-gray-800 hover:bg-cyan-600 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 transform hover:scale-110">𝕏</a>
+                    <a href="#" class="bg-gray-800 hover:bg-cyan-600 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 transform hover:scale-110">in</a>
+                </div>
+                <p class="text-sm font-medium text-gray-300">hello@apextech.com</p>
+            </div>
+        </div>
+        
+        <div class="text-center pt-12 border-t border-gray-700">
+            <p class="text-xs text-gray-500 font-medium">© 2025 ApexTech — All trademarks reserved. Innovation at warp speed. 🚀</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========================================
+        // Advanced Interactive Features & Animations
+        // ========================================
+        
+        // Data models for Tabs (CRM, Software Dev, AI/ML)
+        const contentMap = {
+            crm: {
+                categories: ["CRM Strategy", "Sales Automation", "Customer Analytics", "Integration Services"],
+                services: [
+                    { title: "CRM Consultants", desc: "Expert guidance to align CRM with your business goals and maximize ROI." },
+                    { title: "Salesforce Development", desc: "Custom Salesforce solutions tailored to complex sales cycles and reporting." },
+                    { title: "HubSpot Specialists", desc: "Optimize inbound marketing, sales pipeline and customer service automation." },
+                    { title: "CRM Migration", desc: "Seamless data migration from legacy systems to modern CRM platforms." },
+                    { title: "Analytics & Dashboards", desc: "Real-time insights and KPI dashboards to drive data-informed decisions." },
+                    { title: "Support & Training", desc: "End-to-end training and 24/7 support for your CRM ecosystem." }
+                ]
+            },
+            software: {
+                categories: ["Dedicated team", "Custom Development", "IT Consulting & Support", "Digital Transformation"],
+                services: [
+                    { title: "Full-Stack Developers", desc: "Get the best of both worlds with developers proficient in front-end and back-end technologies for complete project solutions." },
+                    { title: "Front-end developers", desc: "Craft engaging and responsive user interfaces that deliver a smooth and captivating experience across all devices." },
+                    { title: "Back-end developers", desc: "Build robust and scalable server-side solutions that ensure your applications run efficiently and securely." },
+                    { title: "QA Engineers", desc: "Ensure your products are bug-free and perform flawlessly with our automated and manual quality assurance services." },
+                    { title: "Digital Marketers & SEO", desc: "Boost your online presence with targeted strategies to enhance visibility, drive traffic, and maximize conversions." },
+                    { title: "DevOps Engineers", desc: "Automate and optimize your development processes for faster, more reliable software delivery and deployment." }
+                ]
+            },
+            ai: {
+                categories: ["Machine Learning", "Computer Vision", "NLP", "AI Consulting"],
+                services: [
+                    { title: "Predictive Analytics", desc: "Leverage ML models to forecast trends, customer churn, and revenue opportunities." },
+                    { title: "Generative AI Solutions", desc: "Integrate LLMs and generative models for content, code, and creative automation." },
+                    { title: "Computer Vision", desc: "Image recognition, object detection, and video analytics for industrial automation." },
+                    { title: "NLP Chatbots", desc: "Intelligent virtual assistants that understand context and improve user engagement." },
+                    { title: "ML Ops & Deployment", desc: "End-to-end pipeline automation and model deployment at scale." },
+                    { title: "AI Strategy & Audit", desc: "Assess AI readiness and craft a roadmap for responsible AI adoption." }
+                ]
+            }
+        };
+
+        // UI Elements
+        const categoryListEl = document.getElementById('serviceCategoryList');
+        const cardsGridEl = document.getElementById('serviceCardsGrid');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        let activeTab = 'software'; // default
+        let activeCategory = '';
+
+        // Advanced render function with animations
+        function renderCategoriesAndCards(tabId) {
+            const data = contentMap[tabId];
+            if (!data) return;
+            const categories = data.categories;
+            const services = data.services;
+            
+            if (!activeCategory || !categories.includes(activeCategory)) {
+                activeCategory = categories[0];
+            }
+            
+            // Render categories with enhanced styling
+            const categoryHtml = categories.map((cat, idx) => `
+                <li class="service-category-item cursor-pointer py-3 px-4 transition-all duration-300 font-bold text-base rounded-lg 
+                    ${activeCategory === cat ? 'service-tab-active text-cyan-600 bg-gradient-to-r from-cyan-50 to-transparent border-l-4 border-cyan-600 shadow-md' : 'service-tab-inactive text-gray-600 hover:text-cyan-600 hover:bg-gradient-to-r hover:from-gray-50 hover:to-transparent'}"
+                    data-category="${cat}"
+                    style="animation: slideInLeft 0.3s ease ${idx * 0.1}s backwards;">
+                    ${cat}
+                </li>
+            `).join('');
+            categoryListEl.innerHTML = categoryHtml;
+            
+            // Render service cards with staggered animations
+            const filtered = services;
+            const cardsHtml = filtered.map((service, idx) => `
+                <div class="service-card-hover group opacity-0 animate-fade-in-up" style="animation-delay: ${idx * 0.1}s">
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="text-xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">${service.title}</h4>
+                        <span class="arrow-icon transition-all duration-300 text-gray-400 group-hover:text-cyan-600 text-2xl">→</span>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed pr-2 group-hover:text-gray-700 transition-colors">${service.desc}</p>
+                </div>
+            `).join('');
+            cardsGridEl.innerHTML = cardsHtml;
+            
+            // Reattach click listeners
+            document.querySelectorAll('.service-category-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    const cat = item.getAttribute('data-category');
+                    if (cat) {
+                        activeCategory = cat;
+                        renderCategoriesAndCards(activeTab);
+                    }
+                });
+            });
+        }
+        
+        // Advanced tab switching with animations
+        function switchTab(tabId) {
+            activeTab = tabId;
+            const newCategories = contentMap[tabId]?.categories;
+            if (newCategories && newCategories.length) {
+                activeCategory = newCategories[0];
+            }
+            renderCategoriesAndCards(tabId);
+            
+            // Update active tab button
+            tabBtns.forEach(btn => {
+                const btnTab = btn.getAttribute('data-tab');
+                if (btnTab === tabId) {
+                    btn.classList.add('active-tab-btn', 'text-cyan-600');
+                    btn.classList.remove('text-gray-500');
+                } else {
+                    btn.classList.remove('active-tab-btn', 'text-cyan-600');
+                    btn.classList.add('text-gray-500');
+                }
+            });
+        }
+        
+        // Event listeners for tab buttons
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const tabId = btn.getAttribute('data-tab');
+                if (tabId) switchTab(tabId);
+            });
+        });
+        
+        // Initial load
+        switchTab('software');
+        
+        // Add animation styles dynamically
+        const animationStyle = document.createElement('style');
+        animationStyle.textContent = `
+            @keyframes slideInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .animate-fade-in-up {
+                animation: fadeInUp 0.5s ease forwards;
+            }
+            
+            @media (max-width: 640px) {
+                .step-line-relative:not(:last-child)::before {
+                    left: 18px;
+                    top: 40px;
+                    bottom: -20px;
+                }
+            }
+        `;
+        document.head.appendChild(animationStyle);
+        
+        // Smooth scroll functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId && targetId !== "#") {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+        
+        // Contact form submission
+        const contactBtn = document.querySelector('#contact-anchor .bg-gradient-to-r');
+        if (contactBtn) {
+            contactBtn.addEventListener('click', () => {
+                const fields = document.querySelectorAll('#contact-anchor input, #contact-anchor textarea');
+                let isValid = true;
+                
+                fields.forEach(field => {
+                    if (!field.value.trim() && (field.placeholder.includes('*'))) {
+                        isValid = false;
+                        field.classList.add('ring-2', 'ring-red-400');
+                        setTimeout(() => field.classList.remove('ring-2', 'ring-red-400'), 1000);
+                    }
+                });
+                
+                if (isValid) {
+                    alert('Thank you! Our team will reach out within 24 hours. 🎉');
+                }
+            });
+        }
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.stat-box, .service-card-hover').forEach(el => {
+            if (!el.classList.contains('animate-fade-in-up')) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(15px)';
+                el.style.transition = 'all 0.5s ease';
+                observer.observe(el);
+            }
+        });
+        
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('[class*="float"]');
+            parallaxElements.forEach((el, idx) => {
+                el.style.transform = `translateY(${scrolled * (0.2 + idx * 0.1)}px)`;
+            });
+        });
+        
+        // Testimonials Carousel
+        let currentTestimonial = 0;
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        const prevBtn = document.getElementById('prevTestimonial');
+        const nextBtn = document.getElementById('nextTestimonial');
+        
+        function updateCarousel() {
+            testimonialSlides.forEach((slide, index) => {
+                slide.style.transform = `translateX(${100 * (index - currentTestimonial)}%)`;
+            });
+            testimonialDots.forEach((dot, index) => {
+                dot.classList.toggle('bg-cyan-600', index === currentTestimonial);
+                dot.classList.toggle('bg-gray-300', index !== currentTestimonial);
+            });
+        }
+        
+        nextBtn.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % testimonialSlides.length;
+            updateCarousel();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + testimonialSlides.length) % testimonialSlides.length;
+            updateCarousel();
+        });
+        
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentTestimonial = index;
+                updateCarousel();
+            });
+        });
+        
+        updateCarousel();
+        
+        // Auto-play carousel
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonialSlides.length;
+            updateCarousel();
+        }, 5000);
+        
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        let isDarkMode = false;
+        
+        darkModeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark');
+            darkModeToggle.textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+            darkModeToggle.classList.toggle('bg-gray-800', !isDarkMode);
+            darkModeToggle.classList.toggle('bg-yellow-500', isDarkMode);
+        });
+        
+        // Scroll Progress Bar
+        const scrollProgress = document.getElementById('scrollProgress');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollTop / docHeight;
+            scrollProgress.style.transform = `scaleX(${scrollPercent})`;
+        });
+        
+        // Set active navbar link based on current page
+        const currentPath = window.location.pathname.split('/').pop() || 'Mainpage.html';
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if ((currentPath === 'Mainpage.html' && href === '#') || href === currentPath) {
+                link.classList.add('text-cyan-700', 'border-b-2', 'border-cyan-600', 'pb-0.5');
+            }
+        });
+    </script>
+</body>
+</html>
